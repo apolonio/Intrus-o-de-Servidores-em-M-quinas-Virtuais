@@ -1,0 +1,229 @@
+\chapter{Sistemas de Invasão}
+
+
+\section{Programas Maliciosos}
+Temos dois tipos de programas prejudiciais:
+\begin{itemize}
+\item Intencionais~\cite{jamhour}: programas escritos para se infiltrar em um sistema, sem conhecimento de seus usuários, com a intenção de causar dano, furto ou seqüestro de informações. Esses programas são conhecidos como malwares (de
+malicious softwares);
+\item Não-intencionais: programas normais contendo erros de programação ou de configuração que permitam a manipulação não-autorizada das informações de um sistema; esses erros de programação ou de configuração são  denominados vulnerabilidades.
+\end{itemize}
+
+Esses softwares maliciosos  denominados malwares são conjuntos de instruções executadas em um computador e que fazem o sistema realizar algo que um atacante deseja. De forma geral, os malwares podem ser classificados em:
+\begin{itemize}
+\item Vírus
+Classe de software malicioso com a habilidade de se auto-replicar e infectar partes do sistema operacional ou dos programas de aplicação, visando causar a perda ou danos nos dados;
+\item Worm
+Designa qualquer software capaz de propagar a si próprio em
+uma rede. Habitualmente os worms invadem os sistemas computacionais através da exploração de falhas nos serviços de rede;
+\item  Cavalo de Tróia
+Programa com função aparentemente útil, que também realiza ações escondidas visando roubar informações ou provocar danos no sistema;
+\item Rootkit
+Conjunto de ferramentas usadas por um invasor para ocultar sua presença em um sistema invadido. Os rootkits mais sofisticados envolvem modificações no próprio sistema operacional, para ocultar os recursos (com o processos, arquivos e conexões de rede) usados pelo invasor. A análise de um  malware consiste em estudar o conteúdo (análise estática) e o comportamento (análise dinâmica) do programa, para descobrir seus objetivos, seu mé-
+todo de propagação, sua forma de dissimulação no sistema, encontrar evidências que possam indicar sua presença ou atividade e implementar form
+as de detectá-lo, removê-lo do sistema e impedir novas invasões. A análise estática se baseia no estudo do código binário do malware; ela é cada vez mais difícil de realizar, devido ao emprego de técnicas de dissimulação e cifragem. A análise dinâmica consiste na observação da execução do
+malware e de seus efeitos no sistema. Nesse contexto, o uso de uma máquina virtual é benéfico, pelas seguintes razões: Não é necessário dedicar uma máquina real “limpa” para cada análise; Torna-se simples salvar e restaurar estados da máquina virtual, permitindo desfazeros efeitos de uma intrusão; além disso, a comparação entre os estados antes de depois da intrusão permite compreender melhor seus efeitos no sistema; A verificação de informações de baixo nível (como o estado da memória, registradores, dados dentro do núcleo) torna-se mais simples, através da capacidade de inspeção do hipervisor; A tradução dinâmica de instruções pode ser usada para instrumentar o fluxo de instruções executado pelo malware
+\end{itemize}
+
+\section{Ferramentas de Intrusão}
+
+\subsection{Backtrack}
+Existem diversas formas de efetuar ataques em servidores ou host de uma rede e uma das ferramentar utilizadas será utilizada no estudo de caso desse projeto. O Backtrack~\cite{giavaroto} é uma ferramenta voltada para teste de penetração muito utiliza por auditores, analistas de segurança de redes e sistema e hackers éticos. Sua primeira versão é de 26 de maio de 2006, seguida por outras versões até chegar na versão 6 lançada em 2011.
+
+
+
+\subsection{Kali Linux}
+Kali Linux é uma distribuição Linux  derivada do Debian projetado para forense digital~\cite{broad} e testes de penetração. Ele é mantido e financiado pela \emph{ Offensive Security}. Ele foi desenvolvido pela Mati Aharoni e Devon Kearns da ofensiva de Segurança através da reescrita do BackTrack.
+
+Kali Linux pré-instalado com vários programas de testes de penetração~\cite{lakhani}, incluindo nmap (um scanner de portas), Wireshark (um analisador de pacotes), John the Ripper (um cracker de senhas), e Aircrack-ng (uma suíte de software para redes locais sem fio de teste de penetração). Kali Linux pode rodar nativamente quando instalado no disco rígido de um computador, pode ser iniciado a partir de um CD ao vivo ou USB ao vivo, ou ele pode ser executado em uma máquina virtual. É uma plataforma com suporte ao Framework Metasploit, uma ferramenta para o desenvolvimento e execução de falhas de segurança.
+
+Kali Linux é distribuído em imagens de 32 e 64 bits  para uso em máquinas com base no conjunto de instruções x86, e como uma imagem para a arquitetura ARM para uso no computador Raspberry Pi e em ARM da Samsung Chromebook.
+
+Kali Linux 1.0 é um derivado do Debian 7 baseado no Debian \emph{Wheezy}. Portanto, a maioria dos pacotes Kali são importados não modificada a partir dos repositórios do Debian. Em alguns casos, os pacotes mais recentes foram importados da versão instável ou Experimental, ou porque ele melhorou a experiência do usuário, ou porque foi necessário para corrigir alguns bugs.O Kali é a encarnação mais recente do estado em que se encontram as auditorias de segurança no mercado e as ferramentas para testes de invasão~\cite{broad}.
+
+
+\section{Detectando Sistemas Alvos}
+Através do comando ping podemos descobrir hosts ativos, pois esse comando consiste no envio de pacotes icmp e recebimento de mensagens icmp echo. Para verificar um determinado host basta o seguinte comando:
+
+- root@nb:~ ping 192.168.32.129
+
+\subsection {Ferramentas para DNS}  
+
+\begin{itemize}
+\item FPING~\cite{giavaroto}: No backtrack e também no Kali, pode-se encontrar diversas ferramentas para execução de varreduras ping, e o fping, é a uma das que permitem executar testes ping em vários hosts ao mesmo tempo.
+
+
+root@nb:~ fping 192.168.32.129
+192.168.32.129 is alive
+192.168.32.129 is alive
+
+
+\item Hping3~\cite{giavaroto}:
+O hping3 é possível detectar hosts, regras de firewall e também realizar varreduras de portas.
+
+\item Informações sobre DNS (NSLOOKUP)~\cite{giavaroto}: Essa técnica permite obter informações sobre o DNS, para efetuar uma consulta basta digital: -nslookup www.icriacoes.com.br Ele irá retornar Server: 192.168.2.1 Address: 192.168.32.129/53
+
+\item DNSENUM~\cite{giavaroto} : Essa ferramenta permite efetuar pesquisas em hosts, servidores, registros MX, IPs, etc. Digite -dnsenum.pl e surgirá diversas opções e comandos possíveis para utilizá-lo.
+
+\item DNSMAP~\cite{giavaroto} : Essa ferramenta permite descobrir subdomínios relacionados a domínios alvo.
+
+\item DNSRECON~\cite{giavaroto} : Esse é nosso aliado para consultar reversas por faixas de IP, NS, SOA, registros MX, transferências de zonas~\cite{giavaroto} e enumeração de serviços. Sua utilização é simples, veja -./dnsrecon.py -d livroBackTrack.br
+
+\item FIERCE~\cite{giavaroto} : Essa ferramenta nos traz novas informações, como processador da máquina, servidor.Sua utilização é simples, veja -./fierce.pl livroBackTrack.br
+
+\end{itemize}
+
+
+\subsection {Ferramenta FINGERPRINT}
+
+Essa técnica é muito importante na fase de reconhecimento o atacante tenta obter informações sobre o sistema operacional alvo. O fingerprint ou impressão digital ~\cite{giavaroto} permite ao invasor capturar banners e definir qual a melhor alternativa para intrusão. 
+
+Aém dos sistemas operacionais temos outras aplicações que possuem banners de versões, assim como diversos serviços tais como; SSh, Telnet, Apache, SNMP. Permitindo encontrar outras possíveis vulnerabilidades que é um fator determinante para utilização de um exploit.
+
+
+\begin{itemize}
+
+\item NMAP~\cite{giavaroto}: Esse programa criado por Gordon Fyodor Lyon é, uma ferramenta  que realiza varreduras de portas e detecção de versões. Para checagem de versão utilize o seguinte comando
+
+- root@nb nmap -o host(192.168.32.129)
+
+Uma das funções específicas do Nmap é a função -PO, que desativa o método utilizado pelo nmap para indentificar se um host está ativo, envinado um ICMP tipo 8 e um TCP ACK destinado à porta 80.
+
+\item NETCAT~\cite{giavaroto}: Essa ferramenta é util nas técnicas de fingerprint é conhecida pelos analistas como canivete suiço, pois pode realizar varreduras ~\cite{greg} de porta e conexões reversas.Utilizar o parametro -v modo verboso para exibir as mensagens
+- root@nb nc -v 192.168.32.129
+
+
+\end{itemize}
+
+
+
+\subsection {Ferramenta NETIFERA}
+
+
+Permite levantar informações é open source e permite buscar DNS Lookup e descobertas de serviços TCP e UDP.
+
+\subsection {Ferramenta xprobe2}
+
+
+É uma ferramenta utilizada no fingerprint~\cite{giavaroto} para executá-lo é necessário privilégio de root, para utilizá-lo digite o seguinte comando:
+- root@nb pentest/scanners/xprobe2 ./xprobe2 192.168.32.129
+
+Todas as ferramentas mostradas até agora pemitem levantar o perfil do alvo e é de fundamental importância. De posse dessas informações como nomes de sistemas operacionais, serviços ativos, ranges de IP, hosts o invasor terá mais chances de êxito.
+
+\subsection{Exploração de Falhas em Servidores e Aplicações Web}
+
+Não faz diferença o formato em que a aplicação está empacotada ou que funções ela disponibiliza, as vunerabilidades sempre podem existir. Os serviços web não são diferentes, exceto pelo fato de os web services apresentarem masi pontos de injeção de código  disponíveis, o que facilita aos invasores obter um ponto de entrada em um sistema de rede, desfigurando sites ou roubando informações sensíveis. Não adianta proteger o servidor se os serviços estão desprotegidos.
+\subsection{OWASP}
+O OWASP(Open Web Application Security Project) é uma organização sem fins lucrativos que busca melhorias em segurança de software. Ela disponibiliza uma lista anual contendo as 10 vulnerabilidades~\cite{broad} mais comuns na web e em 2013 as principais foram.
+\begin{itemize}
+\item A1 - Injection~\cite{broad}  (Injeção)
+\item A2 - Broken Authentication and Session Management ~\cite{broad} 
+\item A3 - Cross-Site Scripting(XSS)~\cite{broad} 
+\item A4 - Insecure Direct Object References~\cite{broad} 
+\item A5 - Security Misconfigurations~\cite{broad} 
+\item A6 - Sensitive Data Exposure~\cite{broad} 
+\item A7 - Missing Function Level Access Controls~\cite{broad} 
+\item A8 - Cross-Site Request Forgery~\cite{broad} 
+\item A9 - Using Componentes with Known Vulnerabilities~\cite{broad} 
+\item A10 - Unvalidated Redirects and Forwards~\cite{broad} 
+\end{itemize}
+
+De posse da lista acima, pode-se definir alvos e buscar \emph{exploits} que exploram tal vulnerabilidade.
+
+\section{Ciclo de vida dos testes de Invasão}
+
+A maioria dos usuários acham que tudo pode ser facilmente invadido pelos hackers sem nenhum planejamento, simplesmente sentando na frente de um computador e digitando códigos. Mas não é bem assim, pode-se perceber que os hacker éticos são profissionais altamente treinados e compremetidos com metodologias e ferramentas. E esse empenho permite criação de frameworks de ataque que são melhorados a cada dia, facilitando o aprendizado e melhorando as formas de ataque e defesa~\cite{broad}. 
+O ciclo de vida dos testes de invasão passa por cinco fases que são:
+\begin{itemize}
+\item Reconhecimento
+\item Exploração de Falhas
+\item Preservação de acesso
+\item Geração de Relatórios
+\end{itemize}
+
+
+
+\subsection{Reconhecimento}
+Essa fase tem como objetivo aprender tudo sobre a rede ou a empresa que serão alvo do ataque. Isso é feito por meio de pesquisas na internet e através de scans passivos nas conexões disponíveis à rede-alvo. O pentest não penetra diretamente no sistema de defesa da rede, simplesmente identifica e documenta o máximo possível de informações a respeito do alvo~\cite{broad}.
+Essa primeira fase consiste em buscar informações em locais como:
+\begin{itemize}
+\item Espelhamneto de sites
+\item Pesquisa no Google
+\item Google \emph{hacking}
+\item Mídias Sociais
+\item Sites de oferta de Emprego
+\item DNS e ataques de DNS
+
+\end{itemize}
+
+
+\subsection{ Scanning}
+Nesse momento executamos aquilo que foi definido na fase de reconhecimneto, o pentest usará as informações obtidas na fase 1 para iniciar o scanning da rede e do sistema de informação-alvo. Ao usar ferramentas nessa fase, será possível ter uma melhor definição da rede e da infraestrutura do sistema de informação que serão o alvo da exploração de falhas e as informações obtidas nesssa fase serão usadas na fase de exploração de falhas~\cite{broad}.
+As seguintes ferramentas são utilizadas nessa fase:
+
+\begin{itemize}
+\item Nmap
+\item Hping3
+\item Nessus
+
+\end{itemize}
+
+\subsection{Exploração de Falhas - \emph{Exploitation}}
+
+O NIST(\emph{National Institute of Science and Technology}), publicação especial 800-30, Apêndice B, página B-13, uma vulnerabilidade é definida como "uma fraqueza em um sistema de informação, nos procedimentos de segurança de um sistema e nos controles internos ou em uma implementação, e que pode ser explorado por uma fonte de ameaças"~\cite{broad}. Para explorar uma vulnerabilidade é necessário tempo, conhecimento e uma boa dose de persistência para aprender a respeito de todos os tipos de ataques associados a um único vetor de ataque.
+Na tabela \ref{tab:Vetores de Ataques} abaixo podemos verificar os diversos tipos de vetores de ataque e tipos de ataque.
+
+\begin{table}
+\begin{center}
+
+\begin{tabular}{ll}
+\hline
+\textbf{Vetores de Ataque} 	  & \textbf{Tipos de Ataques} \\
+\hline
+\texttt{Injeção de Código} 	 & Buffer Overflow - Transboradamento de Buffer \\
+\texttt{} 	 & Buffer Underrun - Esvaziamento de Buffer \\
+\texttt{} 	 & Vírus \\
+\texttt{} 	 & Malware \\
+\texttt{Baseados em Web}	 & Defacement - Desconfiguração \\
+\texttt{}	 & Cross-Site Scripting - XSS \\
+\texttt{}	 & Cross-Site Request Forgery (CSRF) \\
+\texttt{}	 & Injeção de SQL \\			
+\texttt{Baseados em Rede}	 & DoS \\
+
+\texttt{}	 & DDoS \\
+\texttt{}	 & Interceptação de senhas e de dados sensíveis \\
+\texttt{}	 & Roubo ou falsificação de Credenciais \\
+\texttt{Engenharia Social}	 &  Personificação\\
+\texttt{ }	 &  Phishing\\
+\texttt{ }	 &  Spear Phishing\\
+\texttt{ }	 &  Intelligence Gathering - Coleta de Informações\\
+
+\hline
+\end{tabular}
+
+\end{center}
+\caption{Tabela Vetores~\cite{broad}}
+\label{tab:Vetores de Ataques}
+\end{table}
+
+O propósito dessa fase é entrar no sistema-alvo e sair com informações sem ser notado, usando as vulnerabilidades do sistema e as técnicas comprovadas~\cite{broad}. É interessante que nessa fase tenhamos o domínio dos seguintes pontos:
+
+\begin{itemize}
+\item Diferença entre vetores de ataque e tipos de ataque
+\item As ferramentas básicas do Kali Linux
+\item Uso do metasploit para atacar um alvo
+\item Introdução ao hacking de web services
+\end{itemize}
+
+
+
+\subsection{ Preservação de Acesso}
+Uma vez que as falhas do sistema forem exploradas~\cite{broad}, \emph{backdoors} (portas dos fundos) e \emph{rootkits} serão deixados nos sistemas para permitir o acesso no futuro.
+ 
+\subsection{Geração de Relatórios}
+
+São criados relatórios dos mais diversos para explicar cada passso do processo de hacking, as vulnerabilidades exploradas e os sistema que foram comprometidos, Além disso, em vários casos, um ou mais membros da equipe podem ser solicitados a fornecer uma descrição detalhada aos líderes de alto escalão e à equipe técnica responsável pelo sistema de informação-alvo~\cite{broad}.
+
+
+
+

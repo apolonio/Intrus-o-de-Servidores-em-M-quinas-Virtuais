@@ -1,0 +1,71 @@
+
+\chapter{Servidores}
+Em informática, um servidor é um sistema de computação centralizada que fornece serviços a uma rede de computadores~\cite{hunt}. Esses serviços podem ser de natureza diversa, como por exemplo, arquivos e correio eletrônico. Os computadores que acessam os serviços de um servidor são chamados clientes. As redes que utilizam servidores são do tipo cliente-servidor, utilizadas em redes de médio e grande porte (com muitas máquinas) e em redes onde a questão da segurança desempenha um papel de grande importância. O termo servidor é largamente aplicado a computadores completos, embora um servidor possa equivaler a um software ou a partes de um sistema computacional, ou até mesmo a uma máquina que não seja necessariamente um computador.
+
+\section{Histórico}
+A história dos servidores tem, obviamente, a ver com as redes de computadores. Redes permitiam a comunicação entre diversos computadores~\cite{tanenbaum}, e, com o crescimento destas, surgiu a idéia de dedicar alguns computadores para prestar algum serviço à rede, enquanto outros se utilizariam destes serviços. Os servidores ficariam responsáveis pela primeira função.
+Com o advento das redes, foi crescendo a necessidade das redes terem servidores e minicomputadores, o que acabou contribuindo para a diminuição do uso dos mainframes.
+O crescimento das empresas de redes e o crescimento do uso da Internet entre profissionais e usuários comuns foi o grande impulso para o desenvolvimento e aperfeiçoamento de tecnologias para servidores.
+
+\section{Tipos de Servidores}
+Existem diversos tipos de servidores. Os mais conhecidos são:
+Servidor de Fax: Servidor para transmissão e recepção automatizada de fax pela Internet, disponibilizando também a capacidade de enviar, receber e distribuir fax em todas as estações da internet.
+\begin{itemize}
+
+\item Servidor de arquivos~\cite{carmona}: Servidor que armazena arquivos de diversos usuários.
+\item Servidor web: Servidor responsável pelo armazenamento de páginas de um determinado site, requisitados pelos clientes através de browsers.
+\item Servidor de e-mail ~\cite{carmona}: Servidor publicitário responsável pelo armazenamento, envio e recebimento de mensagens de correio eletrônico.
+\item Servidor de impressão: Servidor responsável por controlar pedidos de impressão de arquivos dos diversos clientes.
+\item Servidor de banco de dados ~\cite{carmona}: Servidor que possui e manipula informações contidas em um banco de dados
+\item Servidor DNS~\cite{kirch}: Servidores responsáveis pela conversão de endereços de sites em endereços IP e vice-versa e trata também da troca de informaçõese entre servdores de nomes.
+\item Servidor proxy~\cite{carmona}: Servidor que atua como um cache, armazenando páginas da internet recém-visitadas, aumentando a velocidade de carregamento destas páginas ao chamá-las novamente.1
+\item Servidor de imagens~\cite{carmona}: Tipo especial de servidor de banco de dados, especializado em armazenar imagens digitais.
+\item Servidor FTP~\cite{carmona}: Permite acesso de outros usuários a um disco rígido ou servidor. Esse tipo de servidor armazena arquivos para dar acesso a eles pela internet.
+Servidor webmail: servidor para criar emails na web.
+\item Servidor de virtualização~\cite{carmona}: permite a criação de máquinas virtuais (servidores isolados no mesmo equipamento) mediante compartilhamento de hardware, significa que, aumentar a eficiência energética, sem prejudicar as aplicações e sem risco de conflitos de uma consolidação real.
+\item Servidor de sistema operacional~\cite{carmona}: permite compartilhar o sistema operacional de uma máquina com outras, interligadas na mesma rede, sem que essas precisem ter um sistema operacional instalado, nem mesmo um HD próprio.
+\end{itemize}
+
+\section{Proteção de Servidores}
+Existem várias ferramentas para a proteção de um servidor e da sua própria rede. Não existe um único software ou hardware que realiza todo o trabalho de proteção. Normalmente os sistemas para proteger uma rede são vários e servem para complementar um ao outro. Exemplos de ferramentas para a proteção são o Firewall~\cite{raitz} e o IDS.
+As ferramentas para segurança de computadores ~\cite{morimoto} e redes são necessárias para proporcionar transações seguras. Geralmente, as instituições concentram suas defesas em ferramentas preventivas como Firewalls, mas acabam ignoranido as ferramentas de detecção de intrusão.
+
+\section{Firewall} 
+Os Firewalls são adaptações modernas de uma antiga forma de segurança medieval: cavar um fosso profundo em volta do castelo. Assim forçando os aqueles que quisessem entrar ou sair do castelo  a passar por uma única ponte elevadiça, onde seriam fiscalizados pelos guardas.
+Firewall é o mecanismo de segurança interposto entre a rede interna e a rede externa com a finalidade de liberar ou bloquear o acesso de computadores remotos aos serviços que são oferecidos em um perímetro ou dentro da rede corporativa. Este mecanismo de segurança pode ser baseado em hardware, software ou uma mistura dos dois.
+A construção de um Firewall é raramente constituída de uma única técnica. É, ao contrário, um conjunto balanceado ~\cite{tanenbaum} de diferentes técnicas para resolver diferentes problemas. O objetivo de qualquer Firewall é criar um perímetro de defesa projetado para proteger os recursos internos de uma organização.
+
+\section{IDS - Sistema de Detecção de Intrusão}
+Atualmente um Firewall não garante mais que a empresa esteja livre de sofrer ataques. Outra ferramenta que se destaca é o Sistema de Detecção de Intrusão (IDS)~\cite{laureano}, uma ferramenta que visa auxiliar as empresas a proteger sua rede contra ataques e invasões.
+Uma forma mais avançada de segurança combina o IDS com o Firewall, onde o IDS detecta
+o intruso e interage com o Firewall para que o tráfego de futuros pacotes possa ser negado.
+istema de detecção de intrusos ou também conhecido como Sistema de detecção de intrusão refere-se aos meios técnicos de descobrir em uma rede acessos não autorizados que podem indicar a ação de um cracker ou até mesmo de funcionários mal intencionados.
+
+Com o acentuado crescimento das tecnologias de infraestrutura tanto nos serviços quanto nos protocolos de rede torna-se cada vez mais difícil a implantação de sistema de detecção de intrusos. Esse fato está intimamente ligado não somente a velocidade com que as tecnologias avançam, mas principalmente com a complexidade dos meios que são utilizados para aumentar a segurança nas transmissões de dados.
+Uma solução bastante discutida é a utilização de host-based IDS que analisam o tráfego de forma individual em uma rede. No host-based o IDS é instalado em um servidor para alertar e identificar ataques e tentativas de acessos indevidos à própria máquina.
+Segue abaixo uma breve discussão de como algumas tecnologias podem dificultar a utilização de sistemas de detecção de intrusos.
+
+\subsection{IDS - Baseados em Rede}
+IDS baseadas em rede ~\cite{tanenbaum}, ou network-based, monitoram os cabeçalhos e o campo de dados dos pacotes a fim de detectar possíveis invasores no sistema, além de acessos que podem prejudicar a performance da rede. A implantação de criptografia (implementada via SSL, IPSec e outras) nas transmissões de dados como elemento de segurança prejudica esse processo. Tal ciframento pode ser aplicado no cabeçalho do pacote, na área de dados do pacote ou até mesmo no pacote inteiro, impedindo e ou dificultando o entendimento dos dados por entidades que não sejam o seu real destinatário.
+
+Exemplificando, o SSL (Secure Socket Layer) é executado entre a camada de transporte e de aplicação do TCP/IP~\cite{carmona}, criptografando assim a área de dados dos pacotes. Sistemas IDS não terão como identificar através do conteúdo dos pacotes ataques para terminar as conexões ou até mesmo interagir com um firewall.
+Outro exemplo é a implementação do IPSec~\cite{eriberto}, que é uma extensão do protocolo IP que é bastante utilizada em soluções de VPN. Existem dois modos de funcionamento, o modo transporte e o modo túnel, descritos na RFC2401 de Kent, Atkinson (1998).
+No modo de transporte o IPSec é similar ao SSL, protegendo ou autenticando somente a área de dados do pacote IP; já no modo túnel o pacote IP inteiro é criptografado e encapsulado. Como pode ser notado no modo transporte um IDS pode verificar somente o cabeçalho do pacote, enquanto o modo túnel nem o cabeçalho e nem a área de dados.
+
+\subsection{IDS - Baseados em \emph{Switching}}
+
+A implementação de IDSs~\cite{tanenbaum} em redes comutadas (no caso baseadas em switching) permitem a comunicação direta, não compartilhada entre dois dispositivos. Essa característica introduz algumas dificuldades para a implementação de IDSs se comparada as redes com transmissão por difusão.
+Como nesse tipo de rede os dados trafegam diretamente para seus destinos (sem a difusão) torna-se preciso, na implantação de IDSs, algumas soluções específicas.
+O uso de Port Span consiste na utilização de switches com IDS embutidos. A decisão de sua utilização deve ser discutida antes da compra dos concentradores de rede (switches).
+O uso de Splitting Wire e Optical Tap é uma solução que consiste em colocar uma "escuta" posicionada entre um switch e um equipamento de rede que se deseja monitorar. Um meio bastante barato de se fazer isso (Ethernet e Fast Ethernet) é a colocação de um concentrador de rede por difusão (hub) na conexão que se deseja vistoriar. No caso de fibras ópticas basta adicionar um dispositivo chamado optical tap.
+O uso de Port Mirror consiste em fazer no switch o espelhamento do tráfego de uma única porta para outra usada para o monitoramento. Esse método é semelhante ao wire tap porem é implantando no próprio switch.
+
+A evolução tecnológica tem também permitido que um maior número de redes possuam altas velocidades de transmissão de dados. Sob o ponto de vista da implantação de IDS isso se torna um ponto bastante delicado que traz questões importantes na manutenção da infra estrutura de redes, destacando-se: os softwares IDS conseguirão analisar toda a grande quantidade de dados que trafegam na rede? O hardware de monitoramento suportará tamanho tráfego? Os IDS não irão prejudicar a performance da rede se tornando um gargalo?.
+Essas, e outras questões, têm sido bastante discutidas, gerando várias soluções para contornar esses problemas ou problemas em potencial. Destacando-se:
+\begin{itemize}
+	\item Aumentar o poder de processamento dos equipamentos;
+	\item Monitoração~\cite{nemeth} utilizando-se target IDS definidas pelo administrador;
+	\item Direcionamento de tráfego, Toplayer;
+	\item Recursos de filtragem dos IDS;
+    \item Segregação de IDS por serviço (IDS especialista).
+\end{itemize}

@@ -1,0 +1,93 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Classe do documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nós usamos a classe "unb-cic".  Deixe apenas uma das linhas
+% abaixo não-comentada, dependendo se você for do bacharelado ou
+% da licenciatura.
+
+%\documentclass[bacharelado]{unb-cic}
+\documentclass[licenciatura]{unb-cic}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pacotes importados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[brazil,american]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\usepackage{natbib}
+\usepackage{xcolor,graphicx,url}
+\usepackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Informações sobre a monografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Intrusão de Servidores em Máquinas Virtuais}
+
+\orientador{\prof \dr Eduardo Adilio Pelinson Alchieri}{CIC/UnB}
+\coordenador{\prof \dr Wilson Henrique Veneziano}{CIC/UnB}
+\diamesano{01}{dezembro}{2014}
+\membrobanca{\prof \dr Edison Ishikawa}{CIC/UnB}
+\membrobanca{\prof Marcos Fagundes Caetano}{CIC/UnB}
+
+\autor{Apolonio Santiago}{da Silva Junior}
+\CDU{004.4}
+
+\palavraschave{sistemas, distruídos, intrusão, segurança, linux, ubuntu, web, invasão}
+\keywords{system, distribuited, intrused, security, linux, ubuntu, web, }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Texto
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+  \maketitle
+  
+  \pretextual
+
+  \begin{dedicatoria}
+  Dedico este trabalho a minha esposa, que acompanhou minha caminhada na UnB desde o início, cuja compreensão me permitiu seguir em frente e concluir o ensino superior.
+  \end{dedicatoria}
+
+  \begin{agradecimentos}
+  Agradeço ao Deus onipontente que me concede vida todos os dias e a meus filhos, pelo simples fato de existirem, o que me dá forças para sempre seguir em frente a fim de alcançar novas metas a cada dia, a minha esposa Viviane, que muito me auxiliou a ter paz, paciência e longanimidade nos momentos mais difíceis para o desenvolvimento desse projeto, a meu orientador, o professor Eduardo Alchieri que me permitiu e incentivou no desenvolvimento, e a diversos professores e alunos do CIC e de outros departamentos que me apoiaram durante minha estadia pela Universidade de Brasília.
+  \end{agradecimentos}
+  \selectlanguage{brazil}
+  \begin{resumo}
+	\input{capitulos/resumo}
+  \end{resumo}
+
+  \selectlanguage{american}
+  \begin{abstract}
+	\input{capitulos/abstract}
+  \end{abstract}
+  \selectlanguage{brazil}
+
+  \tableofcontents
+  \listoffigures
+  %\listoftables
+
+  \textual
+  \input{capitulos/capitulo1.tex}
+  \input{capitulos/capitulo2.tex}
+  \input{capitulos/capitulo3.tex}
+  \input{capitulos/capitulo4.tex}
+  \input{capitulos/capitulo5.tex}
+  \input{capitulos/capitulo6.tex}
+  \input{capitulos/conclusao.tex}
+  
+
+  % ...
+
+  \postextual
+  \bibliographystyle{plain}
+  \bibliography{bibliografia}
+
+\end{document}
